@@ -306,8 +306,8 @@ Para rodar o sistema, siga os seguintes passos:
 
 ### 1. **Clone o Repositório**
 
-git clone https://github.com/seu-usuario/seu-repositorio.git
-cd seu-repositorio
+git clone https://github.com/arthur-bubolz/Teste--Arthur-Bubolz.git
+cd Teste--Arthur-Bubolz
 
 ### 2. Configuração do Ambiente Docker
 Este projeto utiliza o Docker para facilitar a configuração do ambiente. Siga os passos abaixo para configurar o Docker:
