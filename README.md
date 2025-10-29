@@ -134,7 +134,6 @@ A classe `OutputItem` define o formato da saída que os agentes devem retornar a
 
 ### **Classe `OutputItem`**
 
-```python
 class OutputItem(BaseModel):
     titulo: str = Field(description="O título final e otimizado do artigo.")
     conteudo: str = Field(description="O corpo completo do artigo, formatado para leitura.")
