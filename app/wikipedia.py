@@ -32,6 +32,7 @@ def consulta_wikipedia(pagina):
     else:
         return int(response.status_code)
 
+#Função para limpar texto resultante da consulta
 def clean_text(text):
     soup = BeautifulSoup(text, 'html.parser')
     cleaned_text = soup.get_text()
