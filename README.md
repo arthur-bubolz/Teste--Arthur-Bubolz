@@ -306,7 +306,6 @@ Para rodar o sistema, siga os seguintes passos:
 
 ### 1. **Clone o Repositório**
 
-```bash
 git clone https://github.com/seu-usuario/seu-repositorio.git
 cd seu-repositorio
 
