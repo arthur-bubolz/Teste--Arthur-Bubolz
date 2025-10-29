@@ -1,0 +1,65 @@
+retrieve_news_task:
+  description: >
+    Faça uma pesquisa completa sobre {topic}.
+    Certifique-se de encontrar um site com as informações mais relevantes sobre o tópico, do ano atual de {current_year}, e que complementa as informações do texto original: {texto_wiki}.
+    As informações não podem ser conflitantes com o que é apresentado no texto. 
+    Se uma página relevante for encontrada, pare a busca imediatamente e forneça essa página.
+    Caso contrário, continue até encontrar uma página relevante ou atingir o limite máximo de 3 páginas.
+  expected_output: >
+    Conteúdo de 1 site com a informação mais relevante sobre {topic} e que complementa o texto anterior.
+  max_searches: 3
+  agent: retrieve_news
+
+website_scrape_task:
+  description: >
+    Aplicar scrapping ao website para extração de informações mais relevantes sobre {topic}.
+  expected_output: >
+    Aplicação de scrapping total para toda informação importante no website.
+  agent: website_scraper
+
+summarizer_of_websites_task:
+  description: >
+    Analise o texto já produzido: {texto_wiki}. Posteriormente, verifique 
+    as informações externas produzidas pelo agente 'website_scraper'.  
+    Identifique pontos relevantes que não foram abordados no artigo e elabore
+    um texto complementar, trazendo novas informações, perspectivas ou dados
+    atualizados.  
+    O texto deve manter coerência temática e tonalidade compatível com o artigo
+    original.
+  expected_output: >
+    Texto complementar ou seção adicional, integrável ao artigo principal,
+    contendo apenas informações novas e relevantes que não foram exploradas
+    anteriormente. A secção adicional deve estar conectada ao texto original, porém 
+    deve se localizar ao final é preciso conter o texto original de saída produzido pelo agente 'article_maker',
+    em seu ínicio existe uma demarcação indicando por escrito: "texto original", posteriormente o texto deve
+    conter o termo "Info adicional:" indicando as informações adicionais encontradas e que foram devidamente formatadas pelo 
+    agente 'website_scraper'
+  agent: summarizer_of_websites
+  context: [website_scrape_task]
+
+seo_optimization_task:
+  description: >
+    Analise o artigo já produzido pelo agente 'summarizer_of_websites', observando principalmente o texto
+    presente pós o termo "texto original" e o outro texto pós termo "Info adicional". 
+    O objetivo é melhorar a otimização SEO do texto sem comprometer sua qualidade.
+    A otimização deve incluir:
+    - Inclusão de palavras-chave relevantes e naturais
+    - Subtítulos com palavras-chave
+    - Ajustes na estrutura do texto (evitar parágrafos muito longos)
+    - Garantir que o texto tenha entre 300 e 700 palavras (sem exagerar no comprimento, mas não comprometendo a qualidade do artigo)
+    - Melhorar a fluidez e a legibilidade do texto
+    O formato de escrita do artigo deve ser um texto contínuo, sem subtextos internos ou qualquer tipo de título além do início do artigo,
+    um bloco completo de palavras sem nenhum tipo de subtexto interno, mantendo uma linha lógica do início ao fim
+  expected_output: >
+    # Título Otimizado com Palavras-Chave
+
+    Aqui vai uma introdução breve e otimizada para SEO, destacando o tema principal do artigo e integrando as palavras-chave de forma natural.
+    Seções com uma descrição detalhada sobre o tema, com foco nas principais palavras-chave e uma explicação clara e objetiva.
+    Seção que explora a relevância do tema na atualidade, considerando aspectos sociais, ambientais, culturais, econômicos, etc.
+    Discussão sobre os principais desafios enfrentados dentro do tema, incluindo também oportunidades de melhoria ou de intervenção.
+    Resumo das informações principais e reflexão final sobre a importância do tema, com um fechamento claro e direto.
+  agent: text_seo_optmizer
+  context: [summarizer_of_websites_task]
+  output_file: ./report.md
+
+
