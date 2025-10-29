@@ -20,11 +20,6 @@ class AiLatestDevelopment():
 
     agents: List[BaseAgent]
     tasks: List[Task]
-
-    #   ollama_llm = LLM(
-    #       model = 'ollama/llama3.2:1b',
-    #       base_url = 'https://localhost/11434'
-    #   )
     
     @agent
     def retrieve_news(self) -> Agent:

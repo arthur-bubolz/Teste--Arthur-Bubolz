@@ -4,10 +4,10 @@ retrieve_news_task:
     Certifique-se de encontrar um site com as informações mais relevantes sobre o tópico, do ano atual de {current_year}, e que complementa as informações do texto original: {texto_wiki}.
     As informações não podem ser conflitantes com o que é apresentado no texto. 
     Se uma página relevante for encontrada, pare a busca imediatamente e forneça essa página.
-    Caso contrário, continue até encontrar uma página relevante ou atingir o limite máximo de 3 páginas.
+    Caso contrário, separe apenas a parte que demonstra conteúdo complementar no site em si.
   expected_output: >
     Conteúdo de 1 site com a informação mais relevante sobre {topic} e que complementa o texto anterior.
-  max_searches: 3
+  max_searches: 1
   agent: retrieve_news
 
 website_scrape_task:

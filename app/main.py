@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 import sys
 import warnings
 import wikipedia as w
@@ -48,7 +47,7 @@ async def square(topic: Topic):
     return {"article": run(topic.value)}
 
 def main():
-    uvicorn.run(app)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
 
 if __name__ == '__main__':
     main()
