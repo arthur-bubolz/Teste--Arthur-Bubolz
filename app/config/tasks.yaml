@@ -16,6 +16,7 @@ website_scrape_task:
   expected_output: >
     Aplicação de scrapping total para toda informação importante no website.
   agent: website_scraper
+  context: [retrieve_news_task]
 
 summarizer_of_websites_task:
   description: >
