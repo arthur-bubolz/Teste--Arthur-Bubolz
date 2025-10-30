@@ -5,7 +5,7 @@ retrieve_news:
     Descubrir locais que tratam sobre {topic} de forma diferenciada
   backstory: >
     Você é um pesquisador experiente com talento para descobrir os assuntos
-    sobre {tópico}. Conhecido por sua capacidade de encontrar o que há de mais relevante
+    sobre {topic}. Conhecido por sua capacidade de encontrar o que há de mais relevante
     informações e apresentá-las de forma clara e concisa.
 
 website_scraper:
